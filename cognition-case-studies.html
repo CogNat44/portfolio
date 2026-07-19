@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Case Studies | Cognition Controls</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ═══════════════════════════════════════════
+       STYLES — edit colours, fonts, spacing here
+       To change a colour, find the variable in :root{}
+       e.g. --green-mid: #7dc02c  is the lime accent
+    ═══════════════════════════════════════════ */
+    /* BRAND COLOURS — change these to update the whole page */
+    :root {
+      --green-dark:  #0a523e;
+      --green-mid:   #7dc02c;
+      --green-light: #d9ead3;
+      --green-fog:   #f2f7f0;
+      --green-rule:  #c8ddc0;
+      --green-slate: #3d5c4e;
+      --white:       #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--green-dark);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .cta {
+      background: var(--green-mid);
+      color: var(--green-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── INDEX HERO ── */
+    .index-hero {
+      background: var(--green-dark);
+      padding: 72px 48px 64px;
+      text-align: center;
+    }
+    .index-hero .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 14px;
+    }
+    .index-hero h1 {
+      font-size: clamp(4rem, 3.5vw, 5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 560px;
+      margin: 0 auto 16px;
+      letter-spacing: -0.02em;
+    }
+    .index-hero p {
+      color: var(--green-light);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── CASE GRID ── */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 56px auto 80px;
+      padding: 0 48px;
+    }
+
+    /* ── CARD ── */
+    .case-card {
+      border: 1px solid var(--green-rule);
+      border-radius: 10px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .case-card:hover {
+      box-shadow: 0 8px 28px rgba(10,82,62,0.14);
+      transform: translateY(-3px);
+    }
+    .card-img-wrap {
+      position: relative;
+      height: 190px;
+      overflow: hidden;
+      background: var(--green-dark);
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.68);
+    }
+    .card-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(10,82,62,0.5) 0%, rgba(10,82,62,0.1) 100%);
+    }
+    .card-label {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      background: var(--green-mid);
+      color: var(--green-dark);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .card-body {
+      padding: 22px 22px 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+    }
+    .card-industry {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 8px;
+    }
+    .card-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .card-body p {
+      font-size: 0.875rem;
+      color: black;
+      flex: 1;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+    .read-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--green-mid);
+    }
+    .read-link::after { content: ' →'; }
+
+    /* ── CS PAGE ── */
+    .cs-page { display: none; }
+    .cs-page.active { display: block; }
+
+    .cs-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 48px 52px;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(10,82,62,0.5) 0%, rgba(10,82,62,0.7  ) 100%);
+      z-index: 1;
+    }
+    .cs-hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 2; }
+    .cs-hero .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cs-hero .eyebrow .back {
+      color: #8ab89e;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .cs-hero .eyebrow .back:hover { color: var(--green-mid); }
+    .cs-hero .eyebrow .sep { color: #4a7a62; }
+    .cs-hero h1 {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .cs-hero .meta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cs-hero .meta-pill {
+      background: rgba(255,255,255,0.1);
+      color: var(--green-light);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    .cs-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.48);
+    }
+
+    /* ── STAT CARDS ── */
+    .stat-cards-wrap {
+      background: var(--green-fog);
+      border-bottom: 1px solid var(--green-rule);
+      padding: 32px 48px;
+    }
+    .stat-cards {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--green-rule);
+      border-radius: 8px;
+      padding: 20px 22px;
+    }
+    .stat-card .sc-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card .sc-number span { color: var(--green-dark); }
+    .stat-card .sc-label {
+      font-size: 0.78rem;
+      color: var(--green-slate);
+      line-height: 1.4;
+    }
+
+    /* Stat cards overlaid on hero image */
+    .cs-hero .stat-cards-wrap {
+      background: transparent;
+      border: none;
+      padding: 36px 0 0;
+    }
+    .cs-hero .stat-card {
+      background: rgba(188, 188, 188, 0.2);
+      border: 1px solid #7dc02c;
+      backdrop-filter: blur(4px);
+    }
+    .cs-hero .stat-card .sc-number { color: var(--green-mid); }
+    .cs-hero .stat-card .sc-label { color: rgba(255, 255, 255, 0.88); }
+
+    /* ── BODY ── */
+    .cs-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 52px 48px 72px;
+    }
+
+    .challenge-block {
+      border-left: 3px solid var(--green-mid);
+      padding: 18px 22px;
+      background: var(--green-light);
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 44px;
+    }
+    .challenge-block .label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      opacity: 0.6;
+      margin-bottom: 7px;
+    }
+    .challenge-block p {
+      font-size: 0.97rem;
+      color: var(--green-dark);
+      line-height: 1.65;
+    }
+
+    .cs-section { margin-bottom: 40px; }
+    .cs-section h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .cs-section p {
+      font-size: 0.94rem;
+      color: var(--green-slate);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .cs-section p strong { color: var(--green-dark); font-weight: 600; }
+    .cs-section ul { margin: 10px 0 12px 20px; }
+    .cs-section ul li {
+      font-size: 0.93rem;
+      color: var(--green-slate);
+      margin-bottom: 7px;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: var(--green-fog);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      border: 1px solid var(--green-rule);
+    }
+    .highlight-box p {
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--green-dark);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .service-callout {
+      background: var(--green-dark);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .service-callout .sc-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 10px;
+    }
+    .service-callout p {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--green-light);
+      margin-bottom: 6px;
+    }
+
+    .steps { margin: 18px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .step-badge {
+      background: var(--green-mid);
+      color: var(--green-dark);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .step p { font-size: 0.93rem; color: var(--green-slate); margin: 0; }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--green-rule);
+      margin: 32px 0;
+    }
+
+    .inline-img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 20px 0;
+      display: block;
+      border: 1px solid var(--green-rule);
+    }
+
+    /* ── TRUSTED BRANDS ── */
+    .trusted-strip {
+      border-top: 1px solid var(--green-rule);
+      border-bottom: 1px solid var(--green-rule);
+      padding: 28px 6%;
+      background: var(--white);
+    }
+    .trusted-inner {
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .trusted-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8ab89e;
+      white-space: nowrap;
+    }
+    .trusted-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .trusted-logos img {
+      height: 40px;
+      object-fit: contain;
+      max-width: 130px;
+      filter: grayscale(1) opacity(0.65);
+      transition: filter 0.2s;
+    }
+    .trusted-logos img:hover { filter: grayscale(0) opacity(1); }
+
+    /* ── CTA ── */
+    .cs-cta {
+      background: var(--green-dark);
+      text-align: center;
+      padding: 52px 48px;
+    }
+    .cs-cta h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .cs-cta p {
+      font-size: 0.92rem;
+      color: var(--green-light);
+      margin-bottom: 28px;
+    }
+    .cs-cta a {
+      display: inline-block;
+      background: var(--green-mid);
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 13px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin: 0 8px 10px;
+    }
+    .cs-cta a.outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #071f17;
+      color: #5a8a72;
+      text-align: center;
+      padding: 28px 48px;
+      font-size: 0.8rem;
+    }
+    footer a { color: #5a8a72; }
+    footer span { margin: 0 8px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav, .cs-hero, .stat-cards-wrap, .cs-body, .cs-cta, .index-hero, .trusted-strip { padding-left: 20px; padding-right: 20px; }
+      .case-grid { padding: 0 20px; }
+      .stat-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAV — logo + book a demo button
+═══════════════════════════════════════════ -->
+<nav>
+  <a href="#" onclick="showIndex()">
+    <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/cognitioncontrols+logo-1920w.png" alt="Cognition Controls" style="height:34px;display:block;"/>
+  </a>
+  <a class="cta" href="https://www.cognitioncontrols.com/book-demo" target="_blank">Book a Demo</a>
+</nav>
+
+
+<!-- ══════════════ INDEX ══════════════ -->
+<div id="index-page">
+  <!-- INDEX PAGE HEADLINE — edit the h1 and p below -->
+  <div class="index-hero">
+    <div class="eyebrow">Case Studies</div>
+    <h1>Real Buildings. Real Results.</h1>
+    <p>See how operators with large building portfolios are using Cognition to cut costs and get ahead of equipment issues.</p>
+  </div>
+
+  <div class="case-grid">
+
+    <a class="case-card" href="#" onclick="showCase('cs1');return false;">
+      <div class="card-img-wrap">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Napa+pick-1920w.png" alt="NAPA Auto Parts"/>
+        <div class="card-label">Retail · Multi-site</div>
+      </div>
+      <div class="card-body">
+        <div class="card-industry">Retail · Multi-site</div>
+        <h3>Energy Savings Across The Retail Portfolio</h3>
+        <p>A national auto parts distributor gained full HVAC visibility, cut runtime 20%, and saved 8–11% on utility bills — with installation savings of ~$75/unit by avoiding wifi headaches.</p>
+        <div class="read-link">Read case study</div>
+      </div>
+    </a>
+
+    <a class="case-card" href="#" onclick="showCase('cs2');return false;">
+      <div class="card-img-wrap">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burgerking+location-1920w.jpg" alt="QSR Restaurant"/>
+        <div class="card-label">Quick Service Restaurant</div>
+      </div>
+      <div class="card-body">
+        <div class="card-industry">Quick Service Restaurant</div>
+        <h3>Onsite Practice Improvements And Cost Avoidance</h3>
+        <p>A large QSR franchisee used Cognition data to identify and resolve onsite mismanagement, slashing refrigeration issues, and saving ~$1,500/year per location in electricity costs.</p>
+        <div class="read-link">Read case study</div>
+      </div>
+    </a>
+
+    <a class="case-card" href="#" onclick="showCase('cs3');return false;">
+      <div class="card-img-wrap">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/public+building-1920w.png" alt="Public Building"/>
+        <div class="card-label">Government · Municipality</div>
+      </div>
+      <div class="card-body">
+        <div class="card-industry">Government · Municipality</div>
+        <h3>Effective Management For Smaller Public Buildings</h3>
+        <p>A rural municipality replaced reactive, site-visit-based management saving time, effort and real dollars, while getting ahead of issues that impact community enjoyment.</p>
+        <div class="read-link">Read case study</div>
+      </div>
+    </a>
+
+    <a class="case-card" href="#" onclick="showCase('cs4');return false;">
+      <div class="card-img-wrap">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/car+dealership-1920w.png" alt="Car Dealership"/>
+        <div class="card-label">Automotive Dealership</div>
+      </div>
+      <div class="card-body">
+        <div class="card-industry">Automotive Dealership</div>
+        <h3>Remote Managament To Balance Comfort And Savings</h3>
+        <p>A car dealership with aging, varied HVAC equipment gained remote control, equipment diagnostics, and reduced runtime ~20% — while improving staff comfort.</p>
+        <div class="read-link">Read case study</div>
+      </div>
+    </a>
+
+    <a class="case-card" href="#" onclick="showCase('cs5');return false;">
+      <div class="card-img-wrap">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/application+%281%29-1920w.png" alt="Freezer Monitoring"/>
+        <div class="card-label">Quick Service Restaurant</div>
+      </div>
+      <div class="card-body">
+        <div class="card-industry">Quick Service Restaurant</div>
+        <h3>Intelligence Catches What Manual Checks Miss</h3>
+        <p>Cognition's intelligent alerting identified a deteriorating walk-in freezer trend — weeks before onsite staff noticed — preventing a costly equipment failure.</p>
+        <div class="read-link">Read case study</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ══════════════ CS 1 — RETAIL ══════════════ -->
+<div id="cs1" class="cs-page">
+  <div class="cs-hero">
+    <img class="cs-hero-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa+auto+parts-1920w.png" alt="NAPA retail locations"/>
+    <div class="cs-hero-inner">
+      <div class="eyebrow">
+        <a class="back" href="#" onclick="showIndex();return false;">← All Case Studies</a>
+        <span class="sep">/</span>Retail · Multi-site
+      </div>
+      <!-- PAGE TITLE -->
+      <h1>Energy Savings Across Hundreds of Retail Locations</h1>
+      <div class="meta">
+        <span class="meta-pill">National Auto Parts Distributor</span>
+        <span class="meta-pill">Multi-site Rollout</span>
+        <span class="meta-pill">HVAC & Refrigeration</span>
+      </div>
+      <!-- STAT CARDS — key results overlaid on hero image -->
+      <div class="stat-cards-wrap">
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="sc-number">20%</div>
+            <div class="sc-label">Average reduction in HVAC runtime across locations</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">8–11%</div>
+            <div class="sc-label">Savings on utility bills post-deployment</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">~$75</div>
+            <div class="sc-label">Installation cost savings per unit installed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+    <!-- THE CHALLENGE — one paragraph summary of the problem -->
+    <div class="challenge-block">
+      <div class="label">The Challenge</div>
+      <p>With no HVAC visibility or control across hundreds of Canadian locations, this national auto parts distributor had no way to identify, act on, or measure energy savings. Maintenance was entirely reactive — wait for something to break, then fix it.</p>
+    </div>
+
+    <!-- BODY SECTIONS — each cs-section is a headed block of content -->
+    <div class="cs-section">
+      <h2>Simple Rollout at Scale</h2>
+      <p>Compared to competing solutions, Cognition was significantly easier to install. The Cognition team provided rollout project management support, and built-in cellular connectivity worked out of the box — no Wi-Fi configuration, no IT tickets, no network security negotiations.</p>
+      <p>A single HVAC technician could complete multiple location installs per day, with hardware for both HVAC and refrigeration paired and configured from a smartphone. The result: <strong>installation savings of approximately $75 per unit</strong> across the portfolio.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>Visibility That Changed Behavior</h2>
+      <p>Before Cognition, thermostats across all locations were set to a permanent hold — meaning HVAC equipment ran continuously, regardless of occupancy or time of day. The Cognition Dashboard gave users the tools to create flexible schedules, see when those schedules were overridden, and hold locations accountable for unnecessary usage.</p>
+      <p>Where problematic patterns persisted, the distributor's head office used Cognition's remote lockout feature to enforce appropriate settings centrally.</p>
+      <div class="highlight-box">
+        <p>Since deploying Cognition, average HVAC runtime is down 20% across locations — translating to 8–11% savings on utility costs.</p>
+      </div>
+      <img class="inline-img" src="retail-energy-savings.png" alt="Cognition dashboard multi-site map view"/>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>Centralized Information Management</h2>
+      <p>Cognition also addressed a persistent operational gap: fragmented, inconsistent records about equipment across hundreds of locations. Equipment notes make it easy to log service calls, configuration changes, and maintenance history — accessible to both store-level staff and head office.</p>
+      <p>Utility bills are uploaded directly to the Dashboard for quick access and ongoing validation of energy savings, giving the distributor a single source of truth across the portfolio.</p>
+    </div>
+  </div>
+
+  <div class="trusted-strip">
+    <div class="trusted-inner">
+      <div class="trusted-label">Trusted by</div>
+      <div class="trusted-logos">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa-b576eb04-f37a17b9-a8674be7-1920w.png" alt="NAPA"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burger-king-59c5b186-f815937e-1920w.png" alt="Burger King"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Ford-c4b69675-b64e578f-1920w.png" alt="Ford"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/volkswagon-565f7666-bff2facf-41753d59-c887fe4e-1920w.png" alt="Volkswagen"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/town-of-oakville--281-29-0d0baaa5-1920w.png" alt="Town of Oakville"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/SouthDundasLogo_ex_horizontal-7bc51b25-edb359f4-1920w.png" alt="South Dundas"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-cta">
+    <h3>Ready to see results like these?</h3>
+    <p>Talk to our team about a rollout plan for your locations.</p>
+    <a href="https://www.cognitioncontrols.com/book-demo" target="_blank">Book a Demo</a>
+    <a class="outline" href="https://www.cognitioncontrols.com/free-trial" target="_blank">Check Compatibility</a>
+  </div>
+</div>
+
+
+<!-- ══════════════ CS 2 — QSR ══════════════ -->
+<div id="cs2" class="cs-page">
+  <div class="cs-hero">
+    <img class="cs-hero-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burgerking-1920w.jpg" alt="QSR Restaurant"/>
+    <div class="cs-hero-inner">
+      <div class="eyebrow">
+        <a class="back" href="#" onclick="showIndex();return false;">← All Case Studies</a>
+        <span class="sep">/</span>Quick Service Restaurant
+      </div>
+      <h1>Operational Savings Through Smarter Refrigeration & HVAC Control</h1>
+      <div class="meta">
+        <span class="meta-pill">QSR Chain</span>
+        <span class="meta-pill">Refrigeration + HVAC</span>
+        <span class="meta-pill">Multi-location</span>
+      </div>
+      <div class="stat-cards-wrap">
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="sc-number">~$1,500</div>
+            <div class="sc-label">Annualized electricity savings per location</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">↓ Fewer alerts</div>
+            <div class="sc-label">Refrigeration alerts declined significantly post-install</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">Avoided</div>
+            <div class="sc-label">Unnecessary emergency HVAC service calls</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+    <div class="challenge-block">
+      <div class="label">The Challenge</div>
+      <p>Busy restaurant staff rarely noticed critical HVAC and refrigeration issues before they became emergencies — creating food spoilage risk, accelerating equipment wear, and generating costly unplanned service calls.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Refrigeration Data That Changed Onsite Behavior</h2>
+      <p>Waterproof sensors installed in fridges and freezers feed data to a Cognition Smart Commercial Control installed nearby. That data is published to the Cognition Dashboard and analyzed by Cognition Intelligence — with alerting logic built to filter out routine events like defrost cycles and restocking activity, so alerts mean something.</p>
+      <p>In the first weeks after install, alerts surfaced a pattern: staff were regularly leaving fridge doors open for extended periods during restocking. The data was undeniable.</p>
+      <div class="highlight-box">
+        <p>With operational data to validate onsite practices, District Managers were able to isolate problematic locations and shifts. Refrigeration alerts dropped significantly in the months that followed as behavior improved.</p>
+      </div>
+      <img class="inline-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/F_F+operations-1920w.jpg" alt="Cognition refrigeration temperature graph"/>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>Moving Beyond Break-Fix HVAC</h2>
+      <p>Cognition's equipment intelligence helped the QSR reduce HVAC runtime, cutting unnecessary wear and utility costs simultaneously. <strong>Annualized electricity savings reached approximately $1,500 per location.</strong></p>
+      <p>Equipment alerts also gave District Managers the information needed to plan service calls in advance, rather than reacting to failures mid-service. With real-time temperature visibility and the ability for other HVAC units to compensate temporarily, the urgency calculus changed — emergency service calls were avoided.</p>
+      <img class="inline-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/HVAC+Alert-1920w.jpg" alt="Cognition HVAC alert email" style="width:50%;margin-left:auto;margin-right:auto;"/>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>Fast, Non-Disruptive Installation</h2>
+      <p>Cognition hardware for HVAC and refrigeration was installed by a single HVAC technician, with multiple locations completed per day. Cellular connectivity, Bluetooth sensor pairing, and smartphone-based configuration meant no Wi-Fi integration, no IT involvement, and no networking delays.</p>
+    </div>
+  </div>
+
+  <div class="trusted-strip">
+    <div class="trusted-inner">
+      <div class="trusted-label">Trusted by</div>
+      <div class="trusted-logos">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa-b576eb04-f37a17b9-a8674be7-1920w.png" alt="NAPA"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burger-king-59c5b186-f815937e-1920w.png" alt="Burger King"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Ford-c4b69675-b64e578f-1920w.png" alt="Ford"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/volkswagon-565f7666-bff2facf-41753d59-c887fe4e-1920w.png" alt="Volkswagen"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/town-of-oakville--281-29-0d0baaa5-1920w.png" alt="Town of Oakville"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/SouthDundasLogo_ex_horizontal-7bc51b25-edb359f4-1920w.png" alt="South Dundas"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-cta">
+    <h3>Ready to see results like these?</h3>
+    <p>Talk to our team about a rollout plan for your locations.</p>
+    <a href="https://www.cognitioncontrols.com/book-demo" target="_blank">Book a Demo</a>
+    <a class="outline" href="https://www.cognitioncontrols.com/free-trial" target="_blank">Check Compatibility</a>
+  </div>
+</div>
+
+
+<!-- ══════════════ CS 3 — MUNICIPALITY ══════════════ -->
+<div id="cs3" class="cs-page">
+  <div class="cs-hero">
+    <img class="cs-hero-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/public+building-1920w.png" alt="Public building"/>
+    <div class="cs-hero-inner">
+      <div class="eyebrow">
+        <a class="back" href="#" onclick="showIndex();return false;">← All Case Studies</a>
+        <span class="sep">/</span>Government · Municipality
+      </div>
+      <h1>Portfolio Management for Smaller Public Buildings</h1>
+      <div class="meta">
+        <span class="meta-pill">Rural Municipality</span>
+        <span class="meta-pill">Public Buildings Portfolio</span>
+        <span class="meta-pill">Remote HVAC Management</span>
+      </div>
+      <div class="stat-cards-wrap">
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="sc-number">Zero</div>
+            <div class="sc-label">BAS infrastructure required across the portfolio</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">Proactive</div>
+            <div class="sc-label">Issue detection before residents are impacted</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">Remote</div>
+            <div class="sc-label">Troubleshooting and triage for distributed sites</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+    <div class="challenge-block">
+      <div class="label">The Challenge</div>
+      <p>The Municipality manages a portfolio of small public buildings spread across a largely rural landscape of villages and hamlets. Without data, every HVAC issue required a physical site visit — even for simple tasks like seasonal temperature adjustments. The Municipality needed remote visibility and control, but full Building Automation Systems weren't a viable option given the cost and complexity involved.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Straightforward Installation — Even in Remote Locations</h2>
+      <p>Cognition was installed by the Municipality's local HVAC partner. Cellular connectivity worked out of the box across all sites, including more remote locations — providing reliable data transmission without any networking infrastructure investment.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>From Reactive to Proactive</h2>
+      <p>Before Cognition, issues in public buildings only came to light when they were already emergencies — when spaces were too cold to use, or equipment had failed entirely. Cognition alerts gave the Municipality early warning, enabling action before residents were affected.</p>
+      <p>Cognition Dashboard access is now shared with the Municipality's local HVAC partners, who can remotely review data, triage issues, and advise on whether a site visit is warranted — reducing unnecessary truck rolls and improving response times.</p>
+      <div class="service-callout">
+        <div class="sc-label">In Action: Community Hall Heating Failure</div>
+        <p>On a Saturday morning in October, Cognition detected a heating malfunction in the Community Hall auditorium, alerting the Facility Director and HVAC technician simultaneously.</p>
+        <p>The team reviewed dashboard data remotely, confirmed a site visit was needed, and dispatched a technician who found and fixed a faulty gas line connection. Data confirmed the issue was resolved — and the building was cleared for its scheduled reservations without disruption.</p>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>One Platform for the Whole Portfolio</h2>
+      <p>Cognition's built-in information management tools — equipment notes, configuration history, photos, and utility bill uploads — ensure that every decision-maker, from facilities staff to HVAC partners, has the context they need to act quickly and correctly.</p>
+      <img class="inline-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Municipality-1920w.jpg" alt="Cognition municipality dashboard"/>
+      <p>For a small municipality managing a large geographic spread with limited staff, that shared visibility makes the difference between a resolved issue and a failed public event.</p>
+    </div>
+  </div>
+
+  <div class="trusted-strip">
+    <div class="trusted-inner">
+      <div class="trusted-label">Trusted by</div>
+      <div class="trusted-logos">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa-b576eb04-f37a17b9-a8674be7-1920w.png" alt="NAPA"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burger-king-59c5b186-f815937e-1920w.png" alt="Burger King"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Ford-c4b69675-b64e578f-1920w.png" alt="Ford"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/volkswagon-565f7666-bff2facf-41753d59-c887fe4e-1920w.png" alt="Volkswagen"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/town-of-oakville--281-29-0d0baaa5-1920w.png" alt="Town of Oakville"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/SouthDundasLogo_ex_horizontal-7bc51b25-edb359f4-1920w.png" alt="South Dundas"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-cta">
+    <h3>Managing a distributed portfolio with a lean team?</h3>
+    <p>Let's talk about what Cognition can do for your buildings.</p>
+    <a href="https://www.cognitioncontrols.com/book-demo" target="_blank">Book a Demo</a>
+    <a class="outline" href="https://www.cognitioncontrols.com/free-trial" target="_blank">Check Compatibility</a>
+  </div>
+</div>
+
+
+<!-- ══════════════ CS 4 — DEALERSHIP ══════════════ -->
+<div id="cs4" class="cs-page">
+  <div class="cs-hero">
+    <img class="cs-hero-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/car+dealership-1920w.png" alt="Car dealership"/>
+    <div class="cs-hero-inner">
+      <div class="eyebrow">
+        <a class="back" href="#" onclick="showIndex();return false;">← All Case Studies</a>
+        <span class="sep">/</span>Automotive Dealership
+      </div>
+      <h1>Remote Tools to Manage Comfort and Equipment From Anywhere</h1>
+      <div class="meta">
+        <span class="meta-pill">Automotive Dealership</span>
+        <span class="meta-pill">Mixed-use Building</span>
+        <span class="meta-pill">HVAC Management</span>
+      </div>
+      <div class="stat-cards-wrap">
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="sc-number">~20%</div>
+            <div class="sc-label">Reduction in HVAC runtime across the facility</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">Improved</div>
+            <div class="sc-label">Staff comfort across mechanic bays and offices</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">Early</div>
+            <div class="sc-label">Detection of equipment issues and power anomalies</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+    <div class="challenge-block">
+      <div class="label">The Challenge</div>
+      <p>Dealership staff had almost no tools to manage aging HVAC equipment across a complex, mixed-use building — mechanic bays with large garage doors, private offices, and customer-facing areas all in one. With limited technical knowledge onsite and no equipment data available, frustration with comfort and reliability was high.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Flexible Hardware for Complex Spaces</h2>
+      <p>The dealership's building presented specific challenges. In the mechanic bays, large garage doors opened and closed frequently, constantly importing outside air. In staff offices, thermostats were poorly positioned — so the temperatures driving HVAC decisions didn't reflect what staff actually experienced.</p>
+      <p>Cognition Smart Commercial Controls were compatible with the dealership's varied HVAC equipment, and wireless sensors were installed in problem areas to improve temperature accuracy — improving comfort while reducing unnecessary equipment runtime.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>Control That's Actually Usable</h2>
+      <p>Using Cognition's web-based Dashboard and flexible permissions model, staff can now manage comfort and equipment settings from their desktop — without needing to be in front of a thermostat. All override activity is logged automatically, making it easy to identify problem patterns.</p>
+      <p>Cognition Intelligence also auto-limits override durations to prevent runaway comfort adjustments from undermining energy savings. <strong>The result: improved comfort alongside a ~20% reduction in HVAC runtime and lower utility bills.</strong></p>
+      <img class="inline-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Discovery+Analyze+Tab-b4ab1dda-1920w.jpg" alt="Cognition Analyze Tab"/>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>Equipment Intelligence That Pays for Itself</h2>
+      <p>Within weeks of installation, Cognition's runtime and temperature analytics began surfacing issues that had previously gone undetected:</p>
+      <ul>
+        <li><strong>Capacity limits on aging equipment</strong> — older units struggling to reach setpoints during warm weather, helping the dealership prioritize where to invest in upgrades</li>
+        <li><strong>Equipment degradation signals</strong> — early indicators of units requiring service, before failures occurred</li>
+        <li><strong>Isolated power surges</strong> — an ongoing pattern that helped the dealership's electrician diagnose and fix an underlying electrical issue</li>
+        <li><strong>Preventive maintenance reminders</strong> — automated air filter change notifications to stay ahead of performance degradation</li>
+      </ul>
+      <p>All alerts and reminders are auto-documented in the Dashboard's Equipment Notes, giving the dealership a running maintenance log shared with their HVAC service provider.</p>
+      <img class="inline-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/heatmap-1920w.png" alt="Cognition runtime heatmap"/>
+    </div>
+  </div>
+
+  <div class="trusted-strip">
+    <div class="trusted-inner">
+      <div class="trusted-label">Trusted by</div>
+      <div class="trusted-logos">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa-b576eb04-f37a17b9-a8674be7-1920w.png" alt="NAPA"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burger-king-59c5b186-f815937e-1920w.png" alt="Burger King"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Ford-c4b69675-b64e578f-1920w.png" alt="Ford"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/volkswagon-565f7666-bff2facf-41753d59-c887fe4e-1920w.png" alt="Volkswagen"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/town-of-oakville--281-29-0d0baaa5-1920w.png" alt="Town of Oakville"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/SouthDundasLogo_ex_horizontal-7bc51b25-edb359f4-1920w.png" alt="South Dundas"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-cta">
+    <h3>Complex building, mixed equipment, limited time?</h3>
+    <p>Cognition is designed to work with what you have — not require a full replacement.</p>
+    <a href="https://www.cognitioncontrols.com/book-demo" target="_blank">Book a Demo</a>
+    <a class="outline" href="https://www.cognitioncontrols.com/free-trial" target="_blank">Check Compatibility</a>
+  </div>
+</div>
+
+
+<!-- ══════════════ CS 5 — FREEZER ══════════════ -->
+<div id="cs5" class="cs-page">
+  <div class="cs-hero">
+    <img class="cs-hero-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/application+%281%29-1920w.png" alt="Pressure gauge and clogged condenser coil"/>
+    <div class="cs-hero-inner">
+      <div class="eyebrow">
+        <a class="back" href="#" onclick="showIndex();return false;">← All Case Studies</a>
+        <span class="sep">/</span>Quick Service Restaurant
+      </div>
+      <h1>Smart Freezer Monitoring Catches What Manual Checks Miss</h1>
+      <div class="meta">
+        <span class="meta-pill">QSR Restaurant</span>
+        <span class="meta-pill">Walk-In Freezer</span>
+        <span class="meta-pill">Predictive Alerting</span>
+      </div>
+      <div class="stat-cards-wrap">
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="sc-number">Weeks</div>
+            <div class="sc-label">Earlier detection compared to manual temperature checks</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">Avoided</div>
+            <div class="sc-label">Catastrophic equipment failure and food spoilage</div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-number">Zero</div>
+            <div class="sc-label">False alarm fatigue — signal-based alerts only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-body">
+    <div class="challenge-block">
+      <div class="label">The Challenge</div>
+      <p>Freezer equipment failures tend to develop gradually — but manual temperature checks and on-floor staff rarely catch the early signs before things become emergencies. Worse, many monitoring solutions generate so many false alarms that alerts get ignored entirely. The result: equipment issues escalate into disruptions, food spoilage, and expensive emergency repair calls.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Monitoring That Knows the Difference</h2>
+      <p>Cognition's alerting logic is built to understand normal freezer behavior — including defrost cycles, door opens during restocking, and routine temperature variation — before flagging a problem. Alerts fire when patterns deviate from the norm in ways that actually matter, not as a reflex to every temperature blip.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <div class="cs-section">
+      <h2>The Walk-In Freezer: A Step-by-Step Story</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-badge">A</div>
+          <p>Cognition data showed the walk-in freezer consistently operating at the upper end of its normal range. Defrost cycles briefly pushed temperatures out of range, but the overall picture was within acceptable bounds — no alerts, no action needed.</p>
+        </div>
+        <div class="step">
+          <div class="step-badge">B</div>
+          <p>Machine learning algorithms continued to factor in defrost cycles and door open events when evaluating alert thresholds — <strong>notifying staff only when onsite practices drove extended out-of-range periods</strong>, without unnecessary noise.</p>
+        </div>
+        <div class="step">
+          <div class="step-badge">C</div>
+          <p>Smart trending alerts identified a sustained upward shift in the freezer's operating temperature — <strong>the kind of gradual change that's invisible to manual checks, but unmistakable in continuous data.</strong> Onsite staff and HQ were both notified.</p>
+        </div>
+        <div class="step">
+          <div class="step-badge">D</div>
+          <p>Onsite staff pushed back, insisting temperatures were fine. Cognition data gave HQ the confidence to dispatch a service call anyway. The technician found a nearly empty sight glass, a clogged condenser coil, and low refrigerant — <strong>equipment issues that would have continued degrading silently until a full failure.</strong></p>
+        </div>
+      </div>
+
+      <img class="inline-img" src="freezer-monitoring.jpeg" alt="Freezer temperature monitoring charts" style="width:60%;margin-left:auto;margin-right:auto;"/>
+
+      <div class="service-callout">
+        <div class="sc-label">Service Report — From the Technician</div>
+        <p>"The freezer was running but the temperature was high. Found the sight glass almost empty. Checked the condenser coil — it was completely clogged. Cleaned it and tested operation. Still running, but refrigerant level was low. Recommended leak search and repair."</p>
+      </div>
+
+      <img class="inline-img" src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/application+%281%29-1920w.png" alt="Pressure gauge and clogged condenser coil"/>
+
+      <div class="highlight-box">
+        <p>Without Cognition's trending intelligence, this freezer would have continued operating in a degraded state until a failure — with no warning, and no time to plan.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="trusted-strip">
+    <div class="trusted-inner">
+      <div class="trusted-label">Trusted by</div>
+      <div class="trusted-logos">
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa-b576eb04-f37a17b9-a8674be7-1920w.png" alt="NAPA"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burger-king-59c5b186-f815937e-1920w.png" alt="Burger King"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Ford-c4b69675-b64e578f-1920w.png" alt="Ford"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/volkswagon-565f7666-bff2facf-41753d59-c887fe4e-1920w.png" alt="Volkswagen"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/town-of-oakville--281-29-0d0baaa5-1920w.png" alt="Town of Oakville"/>
+        <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/SouthDundasLogo_ex_horizontal-7bc51b25-edb359f4-1920w.png" alt="South Dundas"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-cta">
+    <h3>Don't wait for a freezer failure to find out.</h3>
+    <p>Cognition monitors for the patterns that manual checks miss — and tells you early enough to act.</p>
+    <a href="https://www.cognitioncontrols.com/book-demo" target="_blank">Book a Demo</a>
+    <a class="outline" href="https://www.cognitioncontrols.com/free-trial" target="_blank">Check Compatibility</a>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Cognition Controls — All Rights Reserved
+  <br/>
+  <a href="https://www.cognitioncontrols.com/privacy-policy">Privacy Policy</a>
+  <span>·</span>
+  <a href="https://www.cognitioncontrols.com/terms-of-service">Terms of Service</a>
+</footer>
+
+<script>
+  function showIndex() {
+    document.getElementById('index-page').style.display = 'block';
+    document.querySelectorAll('.cs-page').forEach(p => p.classList.remove('active'));
+    window.scrollTo(0,0);
+  }
+  function showCase(id) {
+    document.getElementById('index-page').style.display = 'none';
+    document.querySelectorAll('.cs-page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0,0);
+  }
+</script>
+</body>
+</html>

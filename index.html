@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Commercial Thermostats | Energy Savings | Cognition Controls</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --color_1: rgba(40,40,40,1);
+  --color_2: rgb(125, 203, 65);
+  --color_3: rgba(255,255,255,1);
+  --color_5: rgba(69,71,69,1);
+  --color_6: rgba(31,50,25,1);
+  --green: rgb(51,129,44);
+}
+body { font-family: Inter, Arial, sans-serif; color: var(--color_1); background: #fff; }
+
+/* NAV */
+#flex-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,82,62);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 10%;
+}
+.nav-logo img { height: 44px; width: auto; }
+.nav-links { display: flex; gap: 20px; list-style: none; }
+.nav-links a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 500; }
+.nav-links a:hover { color: var(--color_2); }
+.nav-btns { display: flex; gap: 10px; }
+.nav-btn {
+  padding: 9px 18px; border-radius: 50px; font-size: 15px; font-weight: bold;
+  text-decoration: none; cursor: pointer; border: none;
+}
+.nav-btn-outline {
+  background: transparent; color: var(--color_2); border: 1px solid var(--color_2);
+}
+.nav-btn-solid {
+  background: rgba(142,202,92,1); color: var(--color_1);
+}
+
+/* HERO */
+.hero {
+  position: relative; min-height: 580px;
+  display: flex; align-items: center; padding: 8% 6%;
+  overflow: hidden;
+}
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    120deg,
+    rgba(10,82,62,0.99) 0%,
+    rgba(10,82,62,0.7) 45%,
+    rgba(10,82,62,0.6) 100%
+  );
+}
+.hero-content { position: relative; z-index: 2; max-width: 600px; }
+.hero-content h1 { font-size: 56px; font-weight: 800; color: #fff; line-height: 1.08; margin-bottom: 18px; letter-spacing: -0.5px; }
+.hero-content p { font-size: 20px; color: rgba(255,255,255,0.88); line-height: 1.55; margin-bottom: 32px; font-weight: 300; }
+.hero-btn {
+  display: inline-block; padding: 14px 34px; background: rgba(142,202,92,1);
+  color: var(--color_1); border-radius: 50px; font-weight: bold; font-size: 17px;
+  text-decoration: none;
+}
+
+/* TRUSTED BAND */
+.trusted-band {
+  padding: 80px 4%; text-align: center;
+  background: #fff;
+  border-bottom: none;
+}
+.trusted-band p {
+  font-size: 15px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--color_1); opacity: 0.6;
+  font-family: Inter, Arial, sans-serif;
+}
+
+/* LOGO SLIDER */
+.logo-slider { padding: 0px 4% 60px; background: #fff; overflow: hidden; }
+.logo-track {
+  display: flex; gap: 72px; align-items: center; justify-content: center; flex-wrap: wrap;
+}
+.logo-track img { height: 60px; object-fit: contain; filter: grayscale(1) opacity(0.65); max-width: 160px; }
+
+/* SECTION: Features */
+.section { padding: 75px 10%; }
+.section-alt { background: #f1f0f0; }
+
+.features-grid { display: flex; flex-direction: column; gap: 32px; }
+.features-headline { width: 100%; }
+.features-headline h2 { font-size: 34px; font-weight: 700; line-height: 1.3; margin-bottom: 0; }
+.features-headline h2 .green { color: var(--green); }
+.feature-cards { display: flex; gap: 24px; flex-wrap: wrap; }
+.feature-card {
+  flex: 1 1 200px; border: 1px solid var(--color_2); border-radius: 10px;
+  padding: 24px; min-height: 220px;
+}
+.feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.feature-card p { font-size: 15px; line-height: 1.55; font-weight: 300; }
+
+/* INTRO BLOCK — case-study challenge-block treatment scaled up */
+.intro-block {
+  border-left: 4px solid rgba(142,202,92,1);
+  background: #eef7e8;
+  border-radius: 0 8px 8px 0;
+  padding: 40px 48px;
+}
+.intro-block .eyebrow {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #1f3219; opacity: 0.55;
+  margin-bottom: 14px;
+}
+.intro-block h2 { font-size: 34px; font-weight: 700; color: #1f3219; margin-bottom: 22px; line-height: 1.3; }
+.intro-block h3 { font-size: 20px; font-weight: 700; color: #1f3219; margin-bottom: 10px; margin-top: 24px; }
+.intro-block p { font-size: 18px; line-height: 1.7; color: #2e4a28; font-weight: 300; margin-bottom: 12px; }
+.diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+.diff-card { background: rgba(10,82,62); border-radius: 8px; padding: 22px 26px; border-top: 5px solid rgb(217, 217, 217); border-bottom: 5px solid rgb(217, 217, 217); }
+.diff-card-title { font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+.diff-card-body { font-size: 15px; line-height: 1.6; color: #e2f9dd; font-weight: 300; }
+
+/* TWO TILES */
+.intro-block-subheading { font-size: 28px; font-weight: 700; color: #1f3219; margin: 32px 0 20px; }
+.two-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: stretch; }
+.tile { background: #ffffff; border-radius: 8px; padding: 28px 32px; border-top: 5px solid rgba(142,202,92,1); border-bottom: 5px solid rgba(142,202,92,1);}
+.tile h3 { font-size: 20px; font-weight: 700; color: rgba(10,82,62); margin-bottom: 12px; margin-top: 0; }
+.tile p { font-size: 16px; line-height: 1.7; color: rgba(10,82,62); font-weight: 300; margin: 0; }
+
+/* STREAMLINED PATH */
+.path-block { max-width: 100%; display: flex; gap: 72px; align-items: flex-start; }
+.path-block-title { flex: 0 0 25%; display: flex; align-items: center; min-height: 100%; }
+.path-block h2 { font-size: 36px; font-weight: 700; color: #ffffff; margin: 0 0 16px; line-height: 1.25; }
+.path-sub { font-size: 16px; line-height: 1.65; font-weight: 300; color: rgba(255,255,255,0.65); margin: 0; }
+.path-steps-wrap { flex: 1; }
+.path-steps { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0; }
+.path-step {
+  display: flex; gap: 20px; align-items: flex-start; position: relative;
+  padding-bottom: 24px;
+}
+.path-step:last-child { padding-bottom: 0; }
+.step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; margin-top: 4px; }
+.step-badge {
+  width: 14px; height: 14px; border-radius: 50%;
+  flex-shrink: 0; z-index: 1;
+}
+.path-step:nth-child(1) .step-badge { background: #d6f5a0; }
+.path-step:nth-child(2) .step-badge { background: #aee84a; }
+.path-step:nth-child(3) .step-badge { background: #7ecf20; }
+.path-step:nth-child(4) .step-badge { background: #4daa0a; }
+.step-line {
+  width: 2px; flex: 1; min-height: 32px; margin-top: 4px;
+}
+.path-step:nth-child(1) .step-line { background: #d6f5a0; }
+.path-step:nth-child(2) .step-line { background: #aee84a; }
+.path-step:nth-child(3) .step-line { background: #7ecf20; }
+.path-step:last-child .step-line { background: #4daa0a; }
+.step-content { padding-top: 0; }
+.step-content strong { display: block; font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+.step-content p { font-size: 16px; line-height: 1.65; font-weight: 300; color: rgba(255,255,255,0.65); margin: 0 0 20px; }
+
+.learn-btn {
+  display: inline-block; padding: 11px 26px; background: rgba(142,202,92,1);
+  color: var(--color_1); border-radius: 50px; font-weight: bold; font-size: 15px;
+  text-decoration: none; margin-top: 20px;
+}
+
+/* INDUSTRY CARDS */
+.industry-section {
+  padding: 75px 10%;
+  background: #efefef;
+}
+.industry-header { margin-bottom: 30px; }
+.industry-header h2 { font-size: 36px; font-weight: 700; color: #0a523e; margin-bottom: 6px; }
+.industry-header p { font-size: 18px; color: #3d5c4e; font-weight: 400; }
+.industry-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.industry-card {
+  background: #fff; border-radius: 10px; overflow: hidden;
+  border: 1px solid #c8ddc0; display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.industry-card:hover { box-shadow: 0 8px 28px rgba(10,82,62,0.14); transform: translateY(-3px); }
+.industry-card-img-wrap { position: relative; height: 190px; overflow: hidden; background: #0a523e; }
+.industry-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.68); }
+.industry-card-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(10,82,62,0.8) 0%, rgba(10,82,62,0.1) 100%); }
+.industry-card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+.industry-card h3 { font-size: 17px; font-weight: 700; color: #0a523e; margin-bottom: 8px; }
+.industry-card p { font-size: 14px; color: #000; line-height: 1.6; margin-bottom: 16px; flex: 1; }
+.industry-btn {
+  display: inline-block; padding: 8px 20px; border: 1px solid #7dc02c;
+  color: #7dc02c; border-radius: 50px; font-size: 14px; font-weight: 700;
+  text-decoration: none; align-self: flex-start;
+}
+
+/* EXPERT SECTION */
+.expert-section { padding: 24px 10% 0; text-align: center; }
+.expert-section h2 { font-size: 34px; font-weight: 700; }
+.expert-section h2 .green { color: var(--green); }
+
+/* SMART STEPS */
+.smart-steps { display: flex; gap: 6%; flex-wrap: wrap; align-items: center; padding: 40px 6% 60px; }
+.smart-step { flex: 1 1 400px; }
+.smart-step h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.smart-step p, .smart-step li { font-size: 16px; line-height: 1.6; font-weight: 300; }
+.smart-step ul { padding-left: 18px; margin-top: 8px; }
+.smart-step-video { flex: 1 1 400px; border-radius: 10px; overflow: hidden; min-height: 280px; position: relative; background: #111; }
+.smart-step-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* DASHBOARD FEATURE */
+.dashboard-section { padding: 100px 10%; background: #0a523e; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+.dashboard-left { flex: 1 1 340px; }
+.dashboard-left h2 { font-size: 36px; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
+.dashboard-left p { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.dashboard-left ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.dashboard-left ul li { font-size: 17px; color: rgba(255,255,255,0.75); padding-left: 20px; position: relative; }
+.dashboard-left ul li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: #8ece5c; }
+.dashboard-right { flex: 1 1 660px; border-radius: 12px; overflow: visible; position: relative; }
+.dashboard-right::before { content: 'DEMO'; position: absolute; top: -12px; right: 16px; background: #8ece5c; color: #0a523e; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; padding: 4px 10px; border-radius: 20px; z-index: 2; }
+.dashboard-right video { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 0 0 20px #8ece5c, 0 0 32px rgba(142,202,92,0.2), 0 16px 48px rgba(0,0,0,0.5); }
+
+/* TESTIMONIALS */
+.testimonials-section { padding: 100px 10%; }
+.testimonials-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 6px; color: #0a523e; }
+.testimonials-section .sub { font-size: 18px; color: #3d5c4e; margin-bottom: 32px; font-weight: 400; }
+.testimonials-grid { display: flex; gap: 24px; flex-wrap: wrap; }
+.testimonial { flex: 1 1 260px; background: #f5f9f0; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; }
+.testimonial p { font-size: 18px; line-height: 1.6; color: #000; flex: 1; }
+.stars { color: #2d9a1f; font-size: 18px; margin-bottom: 6px; margin-top: 20px; }
+.testimonial-name { font-size: 15px; font-weight: 700; color: #0a523e; }
+
+/* CASE STUDIES */
+.case-section { padding: 100px 6%; background: #ffffff; }
+.case-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 6px; color: #0a523e; }
+.case-section .sub2 { font-size: 18px; color: #3d5c4e; margin-bottom: 36px; font-weight: 400; }
+.case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.case-card { border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid #c8ddc0; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
+.case-card:hover { box-shadow: 0 8px 28px rgba(10,82,62,0.14); transform: translateY(-3px); }
+.case-card-img-wrap { position: relative; height: 180px; overflow: hidden; }
+.case-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.68); }
+.case-card-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(10,82,62,0.5) 0%, rgba(10,82,62,0.1) 100%); }
+.case-card-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+.case-card-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #7dc02c; margin-bottom: 8px; }
+.case-card-body h3 { font-size: 16px; font-weight: 700; color: #0a523e; line-height: 1.4; margin: 0; flex: 1; }
+.case-card-link { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 700; color: #7dc02c; text-decoration: none; }
+.case-card-link:hover { text-decoration: underline; }
+
+/* AWARD */
+.award-section {
+  padding: 60px 6%; text-align: center;
+  background: rgba(142,202,92,0.5);
+}
+.award-section h2 { font-size: 32px; font-weight: 700; color: #0a523e; margin-bottom: 8px; }
+.award-section h3 { font-size: 22px; color: #000000; margin-bottom: 10px; }
+.award-section p { font-size: 17px; color: #0a523e); }
+.award-section a { color: var(--color_2); }
+
+/* FAQ */
+.faq-section { padding: 60px 6%; max-width: 860px; margin: 0 auto; }
+.faq-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 28px; color: #0a523e; }
+.faq-item { border-bottom: 1px solid #e0e0e0; }
+.faq-q {
+  font-size: 17px; font-weight: 700; padding: 18px 40px 18px 0;
+  cursor: pointer; position: relative; color: #000000;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.faq-q::after { content: '+'; font-size: 22px; font-weight: 400; color: #7dc02c; flex-shrink: 0; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a { font-size: 16px; color: #444; line-height: 1.65; display: none; padding-bottom: 18px; }
+.faq-item.open .faq-a { display: block; }
+
+/* CTA BOTTOM */
+.cta-section {
+  padding: 75px 6%;
+  background:  #0a523e;
+  display: flex; gap: 6%; flex-wrap: wrap; align-items: flex-start;
+}
+.cta-left { flex: 1 1 300px; }
+.cta-left p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.65; margin-bottom: 10px; }
+.cta-left h2 { font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 14px; }
+.cta-left .body { font-size: 18px; color: rgba(255,255,255,0.9); line-height: 1.5; }
+.cta-right { flex: 1 1 360px; background: #fff; border-radius: 10px; padding: 30px; }
+.cta-right p { font-size: 16px; color: #444; margin-bottom: 16px; }
+.cta-right a.book-btn {
+  display: inline-block; padding: 13px 28px; background: rgba(142,202,92,1);
+  color: var(--color_1); border-radius: 50px; font-weight: bold; font-size: 16px;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  background: #2d2d2d; padding: 40px 6% 16px;
+}
+.footer-top { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 32px; }
+.footer-logo img { height: 44px; width: auto; margin-bottom: 8px; }
+.footer-logo p { color: #fff; font-size: 14px; font-weight: 700; }
+.footer-col h5 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.footer-col ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; }
+.footer-col ul a:hover { color: var(--color_2); }
+.footer-contact { color: rgba(255,255,255,0.85); font-size: 14px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-bottom p, .footer-bottom a { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: none; }
+.footer-bottom a:hover { color: var(--color_2); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="flex-header">
+  <div class="nav-logo">
+    <a href="/"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/cognitioncontrols+logo-1920w.png" alt="Cognition Controls logo"></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/solutions">Industries ▾</a></li>
+    <li><a href="/about-us">About Us</a></li>
+    <li><a href="cognition-case-studies.html">Case Studies</a></li>
+    <li><a href="#">Resources ▾</a></li>
+    <li><a href="/contact-us">Contact us</a></li>
+    <li><a href="https://dashboard.cognitioncontrols.com/login" target="_blank">Client Log-in</a></li>
+  </ul>
+  <div class="nav-btns">
+    <a href="/book-demo" class="nav-btn nav-btn-outline">Book Demo</a>
+    <a href="/free-trial" class="nav-btn nav-btn-solid">Buy Now</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="Hero_Banner_Video_Generation_Request.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>HVAC Energy Management for Multisite Operations.</h1>
+    <p>Stop wasting time and energy. Cognition Controls combines secure hardware with enterprise visibility to give you total command over your facilities.</p>
+    <a href="/book-demo" class="hero-btn">Book a Demo</a>
+  </div>
+</section>
+
+<!-- TRUSTED BAND -->
+<section class="trusted-band">
+  <p>Cognition is the Trusted Partner for Restaurants, Government, and Commercial Facilities Nationwide</p>
+</section>
+
+<!-- LOGO SLIDER -->
+<section class="logo-slider">
+  <div class="logo-track">
+    <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa-b576eb04-f37a17b9-a8674be7-1920w.png" alt="NAPA">
+    <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/Ford-c4b69675-b64e578f-1920w.png" alt="Ford">
+    <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/SouthDundasLogo_ex_horizontal-7bc51b25-edb359f4-1920w.png" alt="South Dundas">
+    <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burger-king-59c5b186-f815937e-1920w.png" alt="Burger King">
+    <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/volkswagon-565f7666-bff2facf-41753d59-c887fe4e-1920w.png" alt="Volkswagen">
+    <img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/town-of-oakville--281-29-0d0baaa5-1920w.png" alt="Town of Oakville">
+    <img src="https://media.licdn.com/dms/image/v2/D560BAQFTIBOXgrgYkw/company-logo_200_200/company-logo_200_200/0/1690309699786/onyxfire_logo?e=2147483647&v=beta&t=4HFdUruucP01e8DE1S7LLIkfQn3_FN4IiLiSAVyPc6E" alt="Onyx Fire">
+    <img src="https://ironbridgeequity.com/wp-content/uploads/2017/06/ironbridge-equity-partners-logo-1.png" alt="Ironbridge">
+  </div>
+</section>
+
+
+<!-- WHY COGNITION -->
+<section class="section">
+  <div class="intro-block">
+    <div class="eyebrow">Why Cognition</div>
+    <h2>We're Different. Here's How:</h1>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-card-title">Simple Install</div>
+        <div class="diff-card-body">No IT or special trades needed. Just your local staff or HVAC Pro.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-title">Pays For Itself</div>
+        <div class="diff-card-body">A quick payback your CFO will love. Affordably priced for scale.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-title">24/7 Monitoring</div>
+        <div class="diff-card-body">Our intelligence reviews your equipment operations 24/7. It's always looking for outliers.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-title">Thoughtful Notifications</div>
+        <div class="diff-card-body">Alerts without the noise. We notify you when your attention is needed.</div>
+      </div>
+    </div>
+    <h2 class="intro-block-subheading">Stop Rising Costs. Prevent Headaches.</h2>
+    <div class="two-tiles">
+      <div class="tile">
+        <h3>Intelligent HVAC and Energy Control</h3>
+        <p>Cognition intelligence helps you identify problematic HVAC equipment, and opportunities for energy savings. Purpose-built for commercial settings, durable, cellular connected hardware can be installed by your local staff or HVAC Pro quickly and affordably.</p>
+      </div>
+      <div class="tile">
+        <h3>Advanced Refrigeration Monitoring for Restaurants</h3>
+        <p>Keep food safe, prevent costly spoilage, and ensure compliance. Cognition 24/7 monitoring and smart alerts ensure busy restaurants understand when poor onsite practices or equipment issues arise to avoid emergencies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD FEATURE -->
+<section class="dashboard-section">
+  <div class="dashboard-left">
+    <h2>Remote Portfolio Management</h2>
+    <p>The Cognition Dashboard is your single pane of glass into HVAC and Refrigeration operations.</p>
+    <ul>
+      <li>Smarter Alerts avoid false alarms</li>
+      <li>Data and tools for Remote Troubleshooting</li>
+      <li>Comfort scheduling and temperature guardrails</li>
+      <li>Flexible permissions and notifications</li>
+      <li>Manage Utility and HVAC bills in one place</li>
+    </ul>
+  </div>
+  <div class="dashboard-right">
+    <video autoplay muted loop playsinline>
+      <source src="dashboard-video.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; margin-bottom:8px;">
+    <div>
+      <h2>Why Multisite Operators Choose Cognition Controls</h2>
+      <p class="sub">Real testimonials from real customers</p>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <p>"Cognition Controls provides our team with a way to lower energy and operating costs without creating headaches for team members. It's easy to use. And I care that it pays for itself."</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-name">CFO, Onyx Fire Protection Services</div>
+    </div>
+    <div class="testimonial">
+      <p>"Cognition is a simple but powerful solution. They're helping us achieve our sustainability goals, and they've helped us identify HVAC issues early!"</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-name">GM, Leggat Auto Group</div>
+    </div>
+    <div class="testimonial">
+      <p>"Managing a portfolio of facilities is a pain. Cognition gives us the control and data we need to make smarter decisions."</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-name">VP, Ironbridge</div>
+    </div>
+  </div>
+</section>
+
+<!-- STREAMLINED PATH -->
+<section class="section section-alt" style="position:relative; overflow:hidden; background-image:url('IMG_0361.jpeg'); background-size:cover; background-position:center;">
+  <div style="position:absolute; inset:0; background:rgba(10,82,62,0.90);"></div>
+  <div class="path-block" style="position:relative; z-index:1;">
+    <div class="path-block-title">
+      <div>
+        <h2>Designed for Ease and Scale</h2>
+        <p class="path-sub">We respect your time. That's why we engineered an efficient deployment process led by our friendly support team.</p>
+      </div>
+    </div>
+    <div class="path-steps-wrap">
+      <ul class="path-steps">
+        <li class="path-step">
+          <div class="step-left"><div class="step-badge"></div><div class="step-line"></div></div>
+          <div class="step-content"><strong>Broad Compatibility</strong><p>Cognition works with most standard 24V heating and cooling systems. Wireless sensors enable supply air, return air and ambient temperature sensing. The same hardware can be used for commercial walk-in fridge/freezer monitoring.</p></div>
+        </li>
+        <li class="path-step">
+          <div class="step-left"><div class="step-badge"></div><div class="step-line"></div></div>
+          <div class="step-content"><strong>Installation Support</strong><p>Cognition is your installation project manager for a friction free experience. Our support teams work with your in-house teams or a trusted HVAC provider, ensuring a zero downtime installation.</p></div>
+        </li>
+        <li class="path-step">
+          <div class="step-left"><div class="step-badge"></div><div class="step-line"></div></div>
+          <div class="step-content"><strong>Instant Connectivity</strong><p>Cognition devices auto-connect to the strongest cellular network upon power-up providing secure connectivity separate from on-site networks. No passwords, no IT tickets. Cognition hardware gets smarter with every auto-update.</p></div>
+        </li>
+        <li class="path-step">
+          <div class="step-left"><div class="step-badge"></div><div class="step-line"></div></div>
+          <div class="step-content"><strong>Scale With Ease</strong><p>Add new locations or users to your dashboard in minutes, not days. Standardize your operations across your entire footprint with the ease of a single pane of glass operational view.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY CARDS -->
+<section class="industry-section">
+  <div class="industry-header">
+    <h2>The Ideal HVAC-R Solution For Your Industry</h2>
+    <p>Cost-effective, scalable solutions for light commercial operations.</p>
+  </div>
+  <div class="industry-cards">
+    <div class="industry-card">
+      <div class="industry-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/pexels-photo-11186008-1920w.jpeg" alt="Restaurants"></div>
+      <div class="industry-card-body">
+        <h3>Restaurants</h3>
+        <p>Protect your food inventory from poor onsite process and equipment issues with our integrated refrigeration monitoring alongside smart HVAC controls.</p>
+        <a href="/restaurant" class="industry-btn">Learn More →</a>
+      </div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/pexels-photo-3952124-1920w.jpeg" alt="Professional Services"></div>
+      <div class="industry-card-body">
+        <h3>Professional Services</h3>
+        <p>Automate temperature schedules and simplify day-to-day operations for offices, clinics, and service-based businesses.</p>
+        <a href="/multisite" class="industry-btn">Learn More →</a>
+      </div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/hvac+pros-1920w.webp" alt="HVAC Professionals"></div>
+      <div class="industry-card-body">
+        <h3>HVAC Professionals</h3>
+        <p>Empower your HVAC team with advanced tools from Cognition Controls. Enjoy real-time monitoring, remote control, and predictive maintenance to boost efficiency.</p>
+        <a href="/hvac-pros" class="industry-btn">Learn More →</a>
+      </div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/pexels-photo-7679877-1920w.jpeg" alt="Retail"></div>
+      <div class="industry-card-body">
+        <h3>Retail</h3>
+        <p>Keep your stores running smoothly and reduce overhead. Cognition Controls gives retail managers real-time HVAC visibility and remote control to lower energy costs.</p>
+        <a href="/multisite" class="industry-btn">Learn More →</a>
+      </div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/govt-1920w.jpg" alt="Government"></div>
+      <div class="industry-card-body">
+        <h3>Government</h3>
+        <p>Secure, scalable building management systems for government facilities, reducing energy expenses and enhancing operational oversight.</p>
+        <a href="/government" class="industry-btn">Learn More →</a>
+      </div>
+    </div>
+    <div class="industry-card">
+      <div class="industry-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/pexels-photo-8500309-1920w.jpeg" alt="Education"></div>
+      <div class="industry-card-body">
+        <h3>Education</h3>
+        <p>Create safe, comfortable spaces for students and staff while easing the burden on your facilities team.</p>
+        <a href="/education" class="industry-btn">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="case-section">
+  <h2>Real Buildings. Real Results.</h2>
+  <p class="sub2">See how multi-site operators are using Cognition to cut costs and get ahead of equipment issues.</p>
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="case-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/napa+auto+parts-1920w.png" alt="Retail"></div>
+      <div class="case-card-body">
+        <div class="case-card-label">Retail · Multi-site</div>
+        <h3>Energy Savings Across Hundreds of Retail Locations</h3>
+        <a href="cognition-case-studies.html" class="case-card-link">Read Case Study →</a>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/burgerking-1920w.jpg" alt="Quick Service Restaurant"></div>
+      <div class="case-card-body">
+        <div class="case-card-label">Quick Service Restaurant</div>
+        <h3>Operational Savings Through Smarter Refrigeration & HVAC Control</h3>
+        <a href="cognition-case-studies.html" class="case-card-link">Read Case Study →</a>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/public+building-1920w.png" alt="Government"></div>
+      <div class="case-card-body">
+        <div class="case-card-label">Government · Municipality</div>
+        <h3>Portfolio Management for Smaller Public Buildings</h3>
+        <a href="cognition-case-studies.html" class="case-card-link">Read Case Study →</a>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-img-wrap"><img src="https://lirp.cdn-website.com/75a43ac4/dms3rep/multi/opt/car+dealership-1920w.png" alt="Automotive Dealership"></div>
+      <div class="case-card-body">
+        <div class="case-card-label">Automotive Dealership</div>
+        <h3>Remote Tools to Manage Comfort and Equipment From Anywhere</h3>
+        <a href="cognition-case-studies.html" class="case-card-link">Read Case Study →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARD -->
+<section class="award-section">
+  <h2>Award Winning Technology</h2>
+  <h3>Top Commercial Thermostat for Energy Savings 2025</h3>
+  <p>We were just named as the best Commercial Thermostat for Energy Savings by <a href="https://www.click360awards.com/best-commercial-thermostat-for-energy-savings-2025" target="_blank">Click360 awards</a>.</p>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-section">
+  <div class="cta-left">
+    <p>Start Your Smarter Journey</p>
+    <h2>Take Control Today</h2>
+    <p class="body">Ready to bring convenience, security, and simplicity to your building management? At Cognition Controls, we're here to empower you with solutions that save time, cut costs, and improve peace of mind.</p>
+  </div>
+  <div class="cta-right">
+    <p>Book a time to speak with our team and see Cognition Controls in action.</p>
+    <a href="/book-demo" class="book-btn">Book a Demo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      <a href="/"><img src="https://lirp.cdn-website.com/75a43ac4/import/clib/cognitioncontrols_com/dms3rep/multi/opt/657a37529839ad0ccbb22d42_cognition+logo-368x87-1920w.png" alt="Cognition Controls"></a>
+      <p>Modernize HVAC Effortlessly</p>
+    </div>
+    <div class="footer-col">
+      <h5>Who We Help</h5>
+      <ul>
+        <li><a href="/education">Education</a></li>
+        <li><a href="/hvac-pros">HVAC PROS</a></li>
+        <li><a href="/government">Government</a></li>
+        <li><a href="/restaurant">Restaurant</a></li>
+        <li><a href="/multisite">Multisite</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/tools-tips">Tools &amp; Tips</a></li>
+        <li><a href="https://dashboard.cognitioncontrols.com/login" target="_blank">Client Dashboard</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/locations">Service Area</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact us</h5>
+      <p class="footer-contact">1-855-604-2875</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 All Rights Reserved | Cognition Controls</p>
+    <div>
+      <a href="/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp;
+      <a href="/terms-of-service">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
