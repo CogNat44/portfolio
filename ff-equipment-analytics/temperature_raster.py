@@ -23,9 +23,9 @@ All zones included — no locations excluded. This is exploratory: we want
 to see the full signal.
 
 Usage:
-    cd ~/Desktop/cogsworth
-    source experiments/natalie/.venv/bin/activate
-    python3 experiments/natalie/temperature_raster.py
+    cd ff-equipment-analytics
+    source .venv/bin/activate
+    temperature_raster.py
 """
 
 import sys

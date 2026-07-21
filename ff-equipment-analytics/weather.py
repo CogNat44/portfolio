@@ -10,9 +10,9 @@ Outputs:
   weather_scatter_<atype>.png       — small-multiples scatter per location
 
 Usage:
-    cd ~/Desktop/cogsworth
-    source experiments/natalie/.venv/bin/activate
-    python3 experiments/natalie/weather.py
+    cd ff-equipment-analytics
+    source .venv/bin/activate
+    weather.py
 """
 
 import sys

@@ -26,9 +26,9 @@ OUTPUTS
   customer_report_detail.png    — monthly sparklines for flagged units
 
 Usage:
-    cd ~/Desktop/cogsworth
-    source experiments/natalie/.venv/bin/activate
-    python3 experiments/natalie/customer_report.py
+    cd ff-equipment-analytics
+    source .venv/bin/activate
+    customer_report.py
 """
 
 import sys

@@ -44,9 +44,9 @@ Noisy locations removed from analysis (still shown in output for reference):
   - Shwarma Store 01 freezer       (chronically broken, running 21°F above setpoint)
 
 Usage:
-    cd ~/Desktop/cogsworth
-    source experiments/natalie/.venv/bin/activate
-    python3 experiments/natalie/defrost_phase.py
+    cd ff-equipment-analytics
+    source .venv/bin/activate
+    defrost_phase.py
 """
 
 import sys

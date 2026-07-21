@@ -44,9 +44,9 @@ Same as Method 1 — noisy locations removed from analysis:
   - Shwarma Store 01 freezer
 
 Usage:
-    cd ~/Desktop/cogsworth
-    source experiments/natalie/.venv/bin/activate
-    python3 experiments/natalie/defrost_lombscargle.py
+    cd ff-equipment-analytics
+    source .venv/bin/activate
+    defrost_lombscargle.py
 """
 
 import sys

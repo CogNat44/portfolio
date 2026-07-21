@@ -14,9 +14,9 @@ Fleet benchmarks (median + IQR) are computed excluding the two anomalous locatio
 Both are still shown in every chart so you can see how far from normal they sit.
 
 Usage:
-    cd ~/Desktop/cogsworth
-    source experiments/natalie/.venv/bin/activate
-    python3 experiments/natalie/story.py
+    cd ff-equipment-analytics
+    source .venv/bin/activate
+    story.py
 """
 
 import sys
@@ -332,7 +332,7 @@ fig.suptitle(
     "Chart 3 — How Often Do Short OOR Events Happen? (≤30 min)\n"
     "These are typically door openings, rush periods, or defrost cycles — "
     "not equipment failures\n"
-    "Fleet benchmark excludes 2571 Lawrence E and The King Store 10 fridge",
+    "Fleet benchmark excludes The King Store 06 (all) and The King Store 10 fridge",
     fontsize=11, fontweight="bold"
 )
 

@@ -1,9 +1,9 @@
 """OOR deep-dive: escalation prediction + defrost cycle detection.
 
 Usage:
-    cd ~/Desktop/cogsworth
-    source experiments/natalie/.venv/bin/activate
-    python3 experiments/natalie/analysis_oor.py
+    cd ff-equipment-analytics
+    source .venv/bin/activate
+    analysis_oor.py
 """
 
 import sys
