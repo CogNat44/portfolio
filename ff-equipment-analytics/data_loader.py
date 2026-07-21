@@ -1,10 +1,8 @@
-"""Load fridge/freezer data from ~/.cogcache into a tidy parquet for analysis.
+"""Fridge/freezer data loader.
 
-Reads the same cached CSV files used by analysis_ff.py — no API call needed.
-
-Usage:
-    cd /Users/natalieelliott/PythonAnalysis
-    python3 /Users/natalieelliott/Desktop/cogsworth/experiments/natalie/data_loader.py
+Anonymized sensor data is included in data/ff_sensors.parquet — no setup needed.
+The build() function is provided for reference if you want to rebuild from your own
+source CSVs using the same zone/device mapping.
 """
 
 import logging

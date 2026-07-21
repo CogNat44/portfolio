@@ -69,10 +69,8 @@ source .venv/bin/activate
 pip install pandas numpy matplotlib scipy astropy pyarrow
 ```
 
-The scripts expect sensor data in `~/.cogcache/` as CSV files with the naming convention `{device}Z{zone_id}-{t_start}-{t_end}.csv`. This is analysis code from a live deployment — data is not included in this repo. Run `data_loader.py` to build the parquet cache from your own source files:
+Anonymized sensor data is included in `data/ff_sensors.parquet` — no additional setup needed. Run any analysis script directly; outputs are saved to `outputs/`.
 
 ```bash
-python3 data_loader.py
+python3 story.py
 ```
-
-Then run any analysis script. Outputs are saved to `outputs/`.
