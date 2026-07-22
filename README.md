@@ -23,7 +23,7 @@ Built an end-to-end pipeline to analyze 245 support call recordings and surface 
 - **Transcription** (`transcribe.py`): Used OpenAI Whisper (medium model) + pyannote speaker diarization to convert MP3 recordings to speaker-labeled transcripts, with PyTorch MPS (Apple GPU) acceleration and post-processing to enforce clean 2-speaker output
 - **Structured analysis** (`analysis_prompt.md` + `combine_results.py`): Ran 10 parallel Claude agents against the transcripts to extract 22 structured fields per call (issue category, complexity, resolution path, emotional tone, etc.), then combined and normalized agent output into a clean CSV
 - **Insight matching** (`insight_match.py`): Fuzzy-matched the 195-call audit against 6,138 system monitoring events using building name similarity, 4-day date windowing, and device ID correlation, identifying which customer calls had already been flagged by the system before the customer reached out
-- **Output** (`Support Call Audit - With Insights.csv`): Final audit with insight match data, showing that a significant portion of calls were preventable with proactive outreach
+- **Output** (`sample_audit.csv`): 8-row anonymised sample of the final audit, illustrating the full 25-column schema including insight match data. Customer names, building addresses, and phone numbers have been replaced with generic identifiers. The full 195-row dataset is not included in this repository.
 
 ---
 
