@@ -1,6 +1,6 @@
 # Portfolio — Natalie Elliott
 
-A selection of web projects built for Cognition Controls.
+A selection of projects built for Cognition Controls.
 
 ---
 
@@ -9,8 +9,10 @@ A selection of web projects built for Cognition Controls.
 Revamped the Cognition Controls home page with a focus on trust and conversion.
 
 - Used Nano Banana to generate an AI video for the hero banner that showcases the hardware in a QSR setting and a user interacting with the Cognition Dashboard
-- Organized page content to demonstrate trust including customer logos and reviews,and to highlight product differentiators and application for different customer types
+- Organized page content to demonstrate trust including customer logos and reviews, and to highlight product differentiators and application for different customer types
 - Structured the page to guide visitors from awareness to action
+
+**[View live →](https://cognat44.github.io/portfolio/)**
 
 ---
 
@@ -29,7 +31,12 @@ Built an end-to-end pipeline to analyze 245 support call recordings and surface 
 
 Mocked up an interactive purchase flow in React, designed to guide different customer types (existing customer, new customer, and prospect with a customer code) through slightly tailored buying experiences.
 
-To run: `npm install && npm start`
+To run locally:
+
+```bash
+cd cognition-purchase-flow
+npm install && npm start
+```
 
 ---
 
@@ -42,7 +49,12 @@ Rebuilt the configuration and onboarding flow using React. The experience begins
 - Built with React and inline styles, displayed in a mobile phone frame
 - Information gathered during config prompts internal team that install is beginning and enables tracking for proactive assistance if required. 
 
-To run: `npm install && npm start`
+To run locally:
+
+```bash
+cd cognition-onboarding-flow
+npm install && npm start
+```
 
 ---
 
@@ -52,3 +64,30 @@ Developed a reusable case study format and wrote five case studies covering rele
 
 - Built a page template for structure consistency: hero image, stat cards, challenge block, body sections, trusted brands strip, and CTA
 - Wrote case studies for customer and issue coverage, including retail multi-site rollout, QSR refrigeration & HVAC, municipal public buildings, automotive dealership, and refrigeration monitoring
+
+**[View live →](https://cognat44.github.io/portfolio/cognition-case-studies.html)**
+
+---
+
+## ff-equipment-analytics/ — F/F Equipment Analytics
+
+Exploratory data analysis on commercial refrigeration equipment (fridges and freezers). 3.5 months of temperature data from 28 units; readings every 2 minutes. Goal was to build a richer picture of equipment health — how stable each unit is, how it compares to the fleet — and feed those insights into the dashboard experience.
+
+All location names are anonymized. Sensor data is included in `data/ff_sensors.parquet` — no additional setup needed.
+
+- **Fleet narrative** (`story.py`): A sequence of charts that builds a complete picture of fleet health — operating temperature position, temperature stability (IQR), short OOR event rate, and a 2D health map (variability vs. position) that immediately shows which units are outliers
+- **OOR escalation detail** (`analysis_oor.py`): OOR events ≥90 consecutive minutes — count and hour-of-day dot plot per location, coloured by duration; identifies locations with chronic problems
+- **Temperature activity patterns** (`temperature_raster.py`): Calendar heatmap and weekly rhythm views of raw equipment temperature, separating mechanical cycles (defrost, compressor) from human operational patterns
+- **Monthly customer health report** (`customer_report.py`): Three-panel summary per unit — avg temperature vs. fleet, variability vs. fleet, and escalation count with trend — sorted red → yellow → green so a customer with 20 units can scan it in under a minute
+
+To run:
+
+```bash
+cd ff-equipment-analytics
+python3 -m venv .venv
+source .venv/bin/activate
+pip install pandas numpy matplotlib scipy astropy pyarrow
+python3 story.py   # or any other analysis script
+```
+
+Outputs are saved to `outputs/`.
