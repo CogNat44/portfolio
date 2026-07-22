@@ -1,11 +1,13 @@
 import csv
+import os
 import re
 from datetime import datetime, timedelta
 from difflib import SequenceMatcher
 
-INSIGHTS_CSV = "/Users/natalieelliott/Support Automation work/Dash + Cogs Insights.csv"
-AUDIT_CSV = "/Users/natalieelliott/Support Automation work/Support Call Audit.csv"
-OUTPUT_CSV = "/Users/natalieelliott/Support Automation work/Support Call Audit - With Insights.csv"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+INSIGHTS_CSV = os.path.join(BASE_DIR, "insights.csv")
+AUDIT_CSV = os.path.join(BASE_DIR, "audit.csv")
+OUTPUT_CSV = os.path.join(BASE_DIR, "audit_with_insights.csv")
 
 LOOKBACK_DAYS = 4
 

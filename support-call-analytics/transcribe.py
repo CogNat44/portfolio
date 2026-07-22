@@ -19,8 +19,9 @@ torch.load = _patched_torch_load
 
 from pyannote.audio import Pipeline
 
-EXTRACTED_DIR = "/Users/natalieelliott/Support Automation work/Support mp3 files/extracted"
-OUTPUT_DIR = "/Users/natalieelliott/Support Automation work/transcripts"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+EXTRACTED_DIR = os.path.join(BASE_DIR, "audio")        # input MP3 files
+OUTPUT_DIR = os.path.join(BASE_DIR, "transcripts")     # output transcript .txt files
 HF_TOKEN = os.environ.get("HF_TOKEN")  # set via: export HF_TOKEN=your_token_here
 
 

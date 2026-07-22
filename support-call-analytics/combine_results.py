@@ -4,8 +4,9 @@ import re
 import os
 import glob
 
-OUTPUT_DIR = "/private/tmp/claude-501/-Users-natalieelliott-Support-Automation-work/03f2059c-d361-4bf1-8a81-5434e4deb97c/tasks"
-RESULT_CSV = "/Users/natalieelliott/Support Automation work/Support Call Audit.csv"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_DIR = os.path.join(BASE_DIR, "agent_outputs")   # directory containing .output files from agent runs
+RESULT_CSV = os.path.join(BASE_DIR, "audit.csv")
 
 HEADER = [
     "Call Identifier", "Call or Text", "Call/Text Date", "Call/Text Time",
