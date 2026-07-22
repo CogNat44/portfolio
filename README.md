@@ -27,7 +27,7 @@ Built an end-to-end pipeline to analyze 245 support call recordings and surface 
 
 ## cognition-purchase-flow/ — Customer Purchase Flow
 
-Mocked up an interactive purchase flow in React, designed to guide different customer types (existing customer, new customer, and prospect with a customer code) through tailored buying experiences.
+Mocked up an interactive purchase flow in React, designed to guide different customer types (existing customer, new customer, and prospect with a customer code) through slightly tailored buying experiences.
 
 To run: `npm install && npm start`
 
@@ -35,12 +35,12 @@ To run: `npm install && npm start`
 
 ## cognition-onboarding-flow/ — Installer Onboarding Flow
 
-Built an interactive installation flow in React for Cognition Controls field installers, covering HVAC and F/F (fridge/freezer) device setup end-to-end.
+Rebuilt the configuration and onboarding flow using React. The experience begins when an installer scans the unque QR code on the hardware. This takes them to this flow. The intent with the rebuild was to rememdy some of the issues uncovered in from the support call analysis work, as well as streamline and provide better info in-flow.
 
-- Dual-path flow supporting HVAC thermostat installs and F/F hub + sensor installs
-- Screens cover power check, wiring, equipment config, sensor pairing, zone setup, connectivity tracking, and troubleshooting
-- Context-aware troubleshooting screens, scrollable temperature range inputs, multi-sensor support, and a mock connectivity tracker
-- Built entirely with React and inline styles, displayed in a mobile phone frame
+- Supports both HVAC and Refrigeration hardware installs (branch at the beginning)
+- Prompts through power check, wiring (HVAC), equipment config, sensor pairing, zone setup, connectivity tracking, and troubleshooting
+- Built with React and inline styles, displayed in a mobile phone frame
+- Information gathered during config prompts internal team that install is beginning and enables tracking for proactive assistance if required. 
 
 To run: `npm install && npm start`
 
@@ -51,4 +51,4 @@ To run: `npm install && npm start`
 Developed a reusable case study format and wrote five case studies covering relevant customer types and problem areas.
 
 - Built a page template for structure consistency: hero image, stat cards, challenge block, body sections, trusted brands strip, and CTA
-- Wrote case studies for customer and issue coverage, including retail multi-site rollout (NAPA), QSR refrigeration & HVAC (Burger King), municipal public buildings, automotive dealership, and refrigeration monitoring
+- Wrote case studies for customer and issue coverage, including retail multi-site rollout, QSR refrigeration & HVAC, municipal public buildings, automotive dealership, and refrigeration monitoring
